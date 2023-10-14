@@ -7,6 +7,7 @@ EXPOSE 80
 RUN yum -y install httpd procps-ng && yum clean all
 COPY src/ /var/www/html
 ENTRYPOINT ["httpd", "-D", "FOREGROUND"]
+
 mkdir src
 cd src
 vi index.html (put "Simple index html")
