@@ -1,0 +1,18 @@
+# Web 1.1
+FROM registry.access.redhat.com/ubi8/ubi:latest
+EXPOSE 80
+RUN yum -y install httpd procps-ng iputils && yum clean all
+COPY src/ /var/www/html
+ENTRYPOINT ["httpd", "-D", "FOREGROUND"]
+
+
+# mkdir web; cd web; vi Dockerfile; mkdir src; 
+#C:\Windows\System32>netsh interface portproxy add v4tov4 listenaddress=192.168.0.107 listenport=8000 connectaddress=172.26.12.154 8000 
+# podman build -t web:1.1 .
+# podman login https://quay.io/user/sainstklim/
+# podman push localhost/web:1.1 quay.io/sainstklim/web:1.1
+# podman login -u ltkiat@gmail.com -v docker.io
+#Password:
+#Used:  C:\Users\User\.config\containers\auth.json
+#Login Succeeded!
+#podman push localhost/web:1.1 ltkiat/web:1.1
